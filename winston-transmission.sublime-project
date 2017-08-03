@@ -1,0 +1,12 @@
+{
+  "folders": [{
+    "file_exclude_patterns": [
+      "yarn.lock"
+    ],
+    "folder_exclude_patterns": [
+      "node_modules",
+      ".git"
+    ],
+    "path": "."
+  }]
+}

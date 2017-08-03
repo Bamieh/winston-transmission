@@ -1,6 +1,6 @@
 # Rocket Transmission
 
-A Custom NodeJS [https://github.com/winstonjs/winston](Winston) Logger, used by Rocket
+A Custom NodeJS [Winston](https://github.com/winstonjs/winston) Logger, used by Rocket
 
 
 ## using The transmission Logger
@@ -25,8 +25,12 @@ Each level is given a specific integer priority. The higher the priority the mor
 
 ## Default Configurations
 
-level: 'info',
-colorize: true,
-timestamp: true,
-prettyPrint: false,
-prefix: "",
+```
+{
+  level: 'info',
+  colorize: true,
+  timestamp: true,
+  prettyPrint: false,
+  prefix: "",
+}
+```
