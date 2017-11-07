@@ -36,6 +36,7 @@ npm install raven
 ```
 
 #### Usage
+```
 import winstonTransmission from 'winston-transmission';
 
 global.winston = winstonTransmission({

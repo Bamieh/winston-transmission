@@ -1,10 +1,14 @@
 {
   "name": "winston-transmission",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Winston Transmission: nodeJS logger built on top of winston",
   "main": "./distribution/index.js",
   "author": "Ahmad Bamieh",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bamieh/winston-transmission"
+  },
   "optionalDependencies": {
     "raven": "^2.x",
     "rollbar": "^2.x",
