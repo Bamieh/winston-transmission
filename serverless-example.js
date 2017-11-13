@@ -9,6 +9,7 @@ module.exports.anoherEvent = function(event, context, callback) {
   callback(null, "Anoher event");
 }
 
+
 module.exports = serverlessTransmission({
   exports: module.exports,
   extraLoggingContext: (event, context) => {
