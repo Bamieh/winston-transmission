@@ -1,22 +1,30 @@
 const serverlessTransmission = require('winston-transmission/serverless');
+const logger = require('winston-transmission')({
+  logLevel: "warn",
+  externalLogging: {
+    sentry: 'SENTRY-KEY-XXXX'
+  },
+});
 
-module.exports.someEvent = function(event, context, callback) {
-  context.log("some information");
+exportsMock = {};
+module.exports.someEvent = function (event, context, callback) {
   callback(null, "Some event");
 }
 
-module.exports.anoherEvent = function(event, context, callback) {
-  callback(null, "Anoher event");
+module.exports.anotherEvent = function (event, context, callback) {
+  callback(null, "Another event");
 }
 
+const parseBody = function (event, context) {
+  event.body = JSON.parse(event.body);
+}
 
-module.exports = serverlessTransmission({
-  exports: module.exports,
-  extraLoggingContext: (event, context) => {
-    return {
-      user: {
-        customer: JSON.parse(event.body).customer;
-      },
-    }
-  }
-})
+const removeCC = function (event, context) {
+  if (event.body.creditCard) event.body.creditCard.number = '****************'
+}
+
+module.exports = serverlessTransmission(module.exports, {
+  logger,
+  presets: ['aws_lambda'],
+  modifiers: [parseBody, removeCC],
+});
