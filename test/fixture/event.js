@@ -1,0 +1,52 @@
+module.exports = {
+  "body": "{\"payment_service\":\"stripe\",\"amount\":49.05,\"orderId\":\"7789115103\",\"customer\":{\"firstName\":\"lama\",\"lastName\":\"s\",\"phone\":\"+970595104746\",\"email\":\"lama.s@yamsafer.me\"},\"billing\":{\"firstName\":\"lama\",\"lastName\":\"s\",\"locality\":\"ramallah\",\"countryCodeAlpha2\":\"PS\",\"streetAddress\":\"ramallah\",\"postalCode\":\"970\",\"region\":null},\"creditCard\":{\"cardholderName\":\"lama s\",\"expirationMonth\":\"09\",\"expirationYear\":\"2019\",\"number\":\"****************\",\"cvv\":\"033\"},\"options\":{\"submitForSettlement\":false},\"customFields\":{\"supplier\":\"LOCAL\",\"hotel_name\":\"Tasit live hoon\",\"checkin_date\":\"11/11/2017\",\"checkout_date\":\"11/12/2017\",\"yamsafer_customer_id\":1122}}",
+  "resource": "/hold",
+  "requestContext": {
+    "resourceId": "6v936z",
+    "apiId": "7mbchj1h2d",
+    "resourcePath": "/hold",
+    "httpMethod": "POST",
+    "requestId": "c9d084f1-c46b-11e7-9c9f-3938abeaaeae",
+    "path": "/staging/hold",
+    "accountId": "107421720451",
+    "identity": {
+      "apiKey": "[Filtered]",
+      "userArn": null,
+      "cognitoAuthenticationType": null,
+      "accessKey": null,
+      "caller": null,
+      "userAgent": null,
+      "user": null,
+      "cognitoIdentityPoolId": null,
+      "cognitoIdentityId": null,
+      "cognitoAuthenticationProvider": null,
+      "sourceIp": "34.248.1.157",
+      "accountId": null
+    },
+    "stage": "staging"
+  },
+  "queryStringParameters": null,
+  "httpMethod": "POST",
+  "pathParameters": null,
+  "headers": {
+    "Via": "1.1 430df1937e42cb8aaa4f10e22e12c98f.cloudfront.net (CloudFront)",
+    "Accept-Encoding": "gzip",
+    "CloudFront-Is-SmartTV-Viewer": "false",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "X-Forwarded-For": "34.248.1.157, 216.137.56.49",
+    "CloudFront-Viewer-Country": "IE",
+    "Accept": "application/json",
+    "X-Amzn-Trace-Id": "Root=1-5a02d5f8-0535a6ca28ed82b602c7ead4",
+    "CloudFront-Is-Mobile-Viewer": "false",
+    "Host": "7mbchj1h2d.execute-api.eu-west-1.amazonaws.com",
+    "X-Forwarded-Proto": "https",
+    "X-Amz-Cf-Id": "UbelRgg1mmM8IGb0P5GyXhR0OUjcM3jVDPLuM07XXQNNFUrTGXNIVw==",
+    "CloudFront-Is-Tablet-Viewer": "false",
+    "X-Forwarded-Port": "443",
+    "CloudFront-Forwarded-Proto": "https",
+    "CloudFront-Is-Desktop-Viewer": "true"
+  },
+  "stageVariables": null,
+  "path": "/hold",
+  "isBase64Encoded": false
+}
