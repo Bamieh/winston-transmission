@@ -1,6 +1,6 @@
 {
   "name": "winston-transmission",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Winston Transmission: logger built on top of winston",
   "main": "./distribution/index.js",
   "author": "Ahmad Bamieh",
@@ -10,6 +10,7 @@
     "url": "https://github.com/Bamieh/winston-transmission"
   },
   "optionalDependencies": {
+    "raven-js": "^3.x",
     "raven": "^2.x",
     "rollbar": "^2.x",
     "winston-loggly-bulk": "^2.x",
@@ -17,13 +18,14 @@
   },
   "peerDependencies": {
     "raven": "^2.x",
+    "raven-js": "^3.x",
     "rollbar": "^2.x",
     "winston-loggly-bulk": "^2.x",
     "winston-papertrail": "^1.x"
   },
   "dependencies": {
-    "winston": "^3.0.0-rc1",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "winston": "^3.0.0-rc1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
