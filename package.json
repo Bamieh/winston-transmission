@@ -1,6 +1,6 @@
 {
   "name": "winston-transmission",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Winston Transmission: logger built on top of winston",
   "main": "./distribution/index.js",
   "author": "Ahmad Bamieh",
