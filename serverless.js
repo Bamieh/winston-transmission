@@ -1,4 +1,5 @@
-const _ = require('lodash');
+const defaultsDeep = require('lodash.defaultsdeep');
+const cloneDeep = require('lodash.clonedeep');
 const setupTransmission = require('./lib');
 
 const defaultConfig = {
@@ -17,7 +18,7 @@ const setupServerless = function(userConfig) {
     presets,
     modifiers,
     customContext,
-  } = _.defaultsDeep(defaultConfig, userConfig);
+  } = defaultsDeep(defaultConfig, userConfig);
 
   const loggerInstance = setupTransmission(logger);
   const presetsMiddlewares = presets.map(preset => require(`./lib/presets/${preset}`));
@@ -29,8 +30,8 @@ const setupServerless = function(userConfig) {
 
           return function (event, context, callback) {
             try {
-              const loggerEvent = _.cloneDeep(event);
-              const loggerContext = _.cloneDeep(context);
+              const loggerEvent = cloneDeep(event);
+              const loggerContext = cloneDeep(context);
 
               modifiers.forEach(modifier => modifier(loggerEvent, loggerContext));
 
