@@ -23,9 +23,11 @@ The basic configurations only reports to the console, the default logging level 
 ```
 import winstonTransmission from 'winston-transmission';
 
-global.winston = winstonTransmission({
+const logger = winstonTransmission({
   logLevel: 'info',
-})
+});
+
+logger.info("Hello World!");
 ```
 
 ### Sentry
