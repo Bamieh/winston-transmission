@@ -11,17 +11,11 @@
   },
   "optionalDependencies": {
     "raven-js": "^3.x",
-    "raven": "^2.x",
-    "rollbar": "^2.x",
-    "winston-loggly-bulk": "^2.x",
-    "winston-papertrail": "^1.x"
+    "raven": "^2.x"
   },
   "peerDependencies": {
     "raven": "^2.x",
-    "raven-js": "^3.x",
-    "rollbar": "^2.x",
-    "winston-loggly-bulk": "^2.x",
-    "winston-papertrail": "^1.x"
+    "raven-js": "^3.x"
   },
   "dependencies": {
     "browser-stdout": "^1.3.0",
