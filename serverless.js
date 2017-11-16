@@ -2,7 +2,6 @@ const _ = require('lodash');
 const setupTransmission = require('./lib');
 
 const defaultConfig = {
-  logger,
   proxyObj: module.parent,
   proxyKey: "exports",
   presets: [],
