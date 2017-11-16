@@ -42,75 +42,12 @@ import winstonTransmission from 'winston-transmission';
 global.winston = winstonTransmission({
   logLevel: 'info',
   processName: 'My Awesome App',
-  externalLogging: {
+  external: {
     logLevel: 'warn',
     sentry: 'SENTRY-KEY-XXXX',
   },
 })
 ```
-
-### Rollbar
-To use Rollbar, install this dependency in your project:
-```
-npm install rollbar
-```
-
-#### Usage
-```
-import winstonTransmission from 'winston-transmission';
-
-global.winston = winstonTransmission({
-  logLevel: 'info',
-  processName: 'My Awesome App',
-  externalLogging: {
-    logLevel: 'warn',
-    rollbar: 'ROLLBAR-KEY-XXXX',
-  },
-})
-```
-### PaperTrail
-To use Rollbar, install this dependency in your project:
-```
-npm install winston-papertrail
-```
-
-#### Usage
-```
-import winstonTransmission from 'winston-transmission';
-
-global.winston = winstonTransmission({
-  logLevel: 'info',
-  processName: 'My Awesome App',
-  externalLogging: {
-    logLevel: 'warn',
-    papertrail: {
-      host: 'PAPERTRAIL HOST',
-      port: 'PAPERTRAIL PORT',
-      program: 'PAPERTRAIL PROGRAM',
-    },
-  },
-})
-```
-### Bugsnag
-To use Bugsnag, install this dependency in your project:
-```
-npm install bugsnag
-```
-
-#### Usage
-```
-import winstonTransmission from 'winston-transmission';
-
-global.winston = winstonTransmission({
-  logLevel: 'info',
-  processName: 'My Awesome App',
-  externalLogging: {
-    logLevel: 'warn',
-    bugsnag: 'BUGSNAG-KEY-XXXX',
-  },
-})
-```
-
 
 ## npm log-levels Assumption
 

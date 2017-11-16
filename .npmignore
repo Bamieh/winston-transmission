@@ -9,7 +9,6 @@ npm-debug.log
 yarn-error.log
 coverage
 .nyc_output
-lib
 *.sublime-*
 .travis.yml
 .nycrc

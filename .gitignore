@@ -1,5 +1,4 @@
 node_modules
-distribution
 *.sublime-workspace
 .idea
 database.sqlite
