@@ -20,7 +20,7 @@ const setupServerless = function(userConfig) {
   } = _.defaultsDeep(defaultConfig, userConfig);
 
   const loggerInstance = setupTransmission(logger);
-  const presetsMiddlewares = presets.map(preset => require(`./presets/${preset}`));
+  const presetsMiddlewares = presets.map(preset => require(`./lib/presets/${preset}`));
 
 
   proxyObj[proxyKey] = new Proxy(proxyObj[proxyKey], {
