@@ -10,6 +10,41 @@ const defaultConfig = {
   customContext: {},
 }
 
+// Captures an error and waits for it to be logged in Sentry
+
+function captureError(err, cb) {
+  function onCaptured() {
+    Raven.removeListener('logged', onCaptured);
+    Raven.removeListener('error', onCaptured);
+    return cb();
+  }
+
+  Raven.on('logged', onCaptured);
+  Raven.on('error', onCaptured);
+  if (err instanceof Error) {
+    Raven.captureException(err);
+  } else {
+    Raven.captureMessage(err, { level: 'error' });
+  }
+}
+
+// // Captures an error and waits for it to be logged in Sentry
+//   function captureError(err, cb) {
+//     function onCaptured() {
+//       Raven.removeListener('logged', onCaptured);
+//       Raven.removeListener('error', onCaptured);
+//       return cb();
+//     }
+
+//     Raven.on('logged', onCaptured);
+//     Raven.on('error', onCaptured);
+//     if (err instanceof Error) {
+//       Raven.captureException(err);
+//     } else {
+//       Raven.captureMessage(err, { level: 'error' });
+//     }
+//   }
+
 const setupServerless = function(userConfig) {
   const {
     logger,
