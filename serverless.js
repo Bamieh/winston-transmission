@@ -7,7 +7,11 @@ const defaultConfig = {
   proxyKey: "exports",
   presets: [],
   modifiers: [],
-  customContext: {},
+}
+
+const getCustomContext = sentry => {
+  if(!sentry || typeof sentry === "string") return () => {};
+  return sentry.context;
 }
 
 const setupServerless = function(userConfig) {
@@ -17,15 +21,14 @@ const setupServerless = function(userConfig) {
     proxyKey,
     presets,
     modifiers,
-    customContext,
-  } = defaultsDeep(defaultConfig, userConfig);
+  } = defaultsDeep(userConfig, defaultConfig);
 
+  const sentryContext = getCustomContext(logger.external && logger.external.sentry);
   const loggerInstance = setupTransmission(logger);
   const presetsMiddlewares = presets.map(preset => require(`./lib/presets/${preset}`));
 
-
   proxyObj[proxyKey] = new Proxy(proxyObj[proxyKey], {
-      get(target, propKey, receiver) {
+      get(target, propKey) {
           const origMethod = target[propKey];
 
           return function (event, context, callback) {
@@ -36,15 +39,14 @@ const setupServerless = function(userConfig) {
               modifiers.forEach(modifier => modifier(loggerEvent, loggerContext));
 
               presetsMiddlewares.forEach(presetMiddleware => {
-                presetMiddleware(loggerInstance, loggerEvent, loggerContext, customContext);
+                presetMiddleware(loggerInstance, loggerEvent, loggerContext, sentryContext);
               });
 
               return origMethod(event, context, callback)
             } catch (err) {
               loggerInstance.error(err);
-              throw err;
+              callback(err);
             }
-
         };
       }
   });

@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'test';
 
-import chai from 'chai';
-import spies from 'chai-spies';
+const chai = require('chai');
+const spies = require('chai-spies');
 
 chai.use(spies);
 

@@ -1,28 +1,45 @@
-import NOOP from './fixture/noop';
-import createLogger from '../lib';
-import eventFixture from './fixture/event';
-import contextFixture from './fixture/context';
-import serverlessTransmission from '../lib/serverless';
+const NOOP = require('./fixture/noop');
+const eventFixture = require('./fixture/event');
+const contextFixture = require('./fixture/context');
+const serverlessTransmission = require('../serverless');
 
 describe.only('Serverless', function () {
   before(function () {
-    const exportsMock = {};
-    const logger = createLogger({
-      logLevel: "warn",
-      externalLogging: {
-        sentry: 'SENTRY-KEY-XXXX'
+    const mockModule = {exports: {}};
+
+    const logger = serverlessTransmission({
+      proxyObj: mockModule,
+      logger: {
+        logLevel: "warn",
+        external: {
+          sentry: {
+            key: 'https://7751fdb7a2be4f309350319e802b62af:e31dfab149214b43b9e94d28e281dcbb@sentry.io/238615',
+            context: event => {
+              return {
+                user: {
+                  email: event.body.customer.email
+                }
+              }
+            }
+          },
+        },
       },
+      presets: ['aws_lambda'],
+      modifiers: [filterSensitiveInformation]
     });
 
-    exportsMock.someEvent = function (event, context, callback) {
+    mockModule.exports.someEvent = function (event, context, callback) {
       logger.warn('Hello world!');
+      throw new Error("testing");
       callback(null, "Some event");
     }
 
-    exportsMock.anotherEvent = function (event, context, callback) {
+    mockModule.exports.anotherEvent = function (event, context, callback) {
       throw new Error("exception");
       callback(null, "Another event");
     }
+
+    this.mockModule = mockModule;
 
     function filterSensitiveInformation(event, context) {
       event.body = JSON.parse(event.body)
@@ -31,17 +48,6 @@ describe.only('Serverless', function () {
 
       return {event, context}
     }
-
-    this.exports = serverlessTransmission(exportsMock, {
-      logger: logger,
-      presets: ['aws_lambda'],
-      modifiers: [filterSensitiveInformation],
-      customContext: {
-        user: {
-          email: 'test@yamsafer.me'
-        }
-      }
-    });
   });
 
   it('lib exports serverless', function () {
@@ -49,9 +55,10 @@ describe.only('Serverless', function () {
   });
 
   it('wraps exports with transmission function', function () {
-    expect(this.exports).to.be.an('object')
+    expect(this.mockModule.exports).to.be.an('object')
   });
-  it.skip('executes a lambda function with logger', function () {
-    this.exports.someEvent(eventFixture, contextFixture, NOOP)
+  it('executes a lambda function with logger', function () {
+
+    this.mockModule.exports.someEvent(eventFixture, contextFixture, NOOP)
   })
 });

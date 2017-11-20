@@ -33,7 +33,7 @@ module.exports = {
     "Accept-Encoding": "gzip",
     "CloudFront-Is-SmartTV-Viewer": "false",
     "Content-Type": "application/x-www-form-urlencoded",
-    "X-Forwarded-For": "34.248.1.157, 216.137.56.49",
+    "X-Forwarded-For": "192.168.1.1, 10.0.0.10",
     "CloudFront-Viewer-Country": "IE",
     "Accept": "application/json",
     "X-Amzn-Trace-Id": "Root=1-5a02d5f8-0535a6ca28ed82b602c7ead4",

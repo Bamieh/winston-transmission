@@ -1,4 +1,4 @@
-import createTransmission from '../lib'
+const createTransmission = require('../lib')
 
 describe('Serverless', function() {
   it('lib exports createTransmission', function() {
