@@ -9,10 +9,7 @@ const defaultConfig = {
   modifiers: [],
 }
 
-const getCustomContext = sentry => {
-  if(!sentry || typeof sentry === "string") return () => {};
-  return sentry.context;
-}
+const getCustomContext = sentry => typeof sentry.context !== "function"? () => {} : sentry.context;
 
 const setupServerless = function(userConfig) {
   const {

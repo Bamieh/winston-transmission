@@ -14,13 +14,13 @@ describe.only('Serverless', function () {
         external: {
           sentry: {
             key: 'https://7751fdb7a2be4f309350319e802b62af:e31dfab149214b43b9e94d28e281dcbb@sentry.io/238615',
-            context: event => {
+            context: (event, context) => {
               return {
                 user: {
-                  email: event.body.customer.email
+                  email: event.body.customer.email,
                 }
               }
-            }
+            },
           },
         },
       },
