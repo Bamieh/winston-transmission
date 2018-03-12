@@ -1,4 +1,4 @@
-const defaultsDeep = require('lodash.defaultsdeep');
+const defaults = require('lodash.defaults');
 const cloneDeep = require('lodash.clonedeep');
 const setupTransmission = require('./lib');
 
@@ -28,7 +28,7 @@ const setupServerless = function(userConfig) {
     proxyKey,
     presets,
     modifiers,
-  } = defaultsDeep(userConfig, defaultConfig);
+  } = defaults(userConfig, defaultConfig);
 
   const sentryContext = getCustomContext(logger);
   const loggerInstance = setupTransmission(logger);
